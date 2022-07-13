@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Signing page</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+  <header>
+    <h2>Sign-in</h2>
+  </header>
+  <main>
+    <div class="box-container">
+
+      <div class="form-container">
+        <div class="signin-signup">
+          <div class="button">
+            <a href="signin.html" class="active acount-button">Sign-in</a>
+          </div>
+          <div class="button active">
+            <a href="../index.html" class="acount-button">Sign-up</a>
+          </div>
+        </div>
+
+        <br /><br />
+
+        <div class="input-field">
+          <a class="fa fa-envelope"></a>
+          <input type="email" placeholder="enter email" id="email" />
+        </div>
+        <div class="input-field">
+          <a class="fa fa-lock"></a>
+          <input type="password" placeholder="Enter password" id="password" />
+        </div>
+
+        <button type="submit" id="subButton" class="btn" onclick="signIn()">SignIn</button>
+
+        <hr />
+        <hr />
+        <a class="fa fa-google option"></a>
+        <a class="fa fa-facebook option"></a>
+        <a class="fa fa-linkedin option"></a>
+      </div>
+
+    </div>
+  </main>
+  <footer></footer>
+  <script>
+    signIn = () => {
+
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+
+      var user = JSON.parse(localStorage.getItem("user"));
+      var isMatch = false;
+      if (email != "" || password != "") {
+        for (let i = 0; i < user.length; i++) {
+          if (user[i]['email'] === email && user[i]['password'] === password) {
+            isMatch = true;
+          }
+        }
+      } else {
+        alert("Please! fill empty area");
+      }
+
+      if (isMatch == true) {
+        window.location.href = "users.html";
+      } else {
+
+        alert("Enter valid email and password")
+
+      }
+
+
+
+
+
+    }
+  </script>
+</body>
+
+</html>

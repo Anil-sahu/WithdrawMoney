@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Withdraw Money</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .active {
+      background-color: rgb(0, 255, 102);
+      border: 1px solid white;
+    }
+
+    a:hover {
+      background-color: rgb(1, 29, 21);
+      border: 1px solid white;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <a href="users.html">View Users</a>
+      <a href="moneyAss.html" class="active" style="background-color:rgb(4, 168, 119);">Withdraw money</a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="form-container1">
+        <div class="hint">
+          <p>Pleas! enter a number amount you want to withdraw</p>
+        </div>
+        <input type="text" placeholder="Enter a number" id="amount" />
+
+        <button id="sub-button" class="btn" onclick="withDrawMoney()">
+          check
+        </button>
+        <div class="form-container1 box" id="box2">
+
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+  <script>
+    withDrawMoney = () => {
+      var amount = document.getElementById('amount').value;
+      var res = document.getElementById("box2");
+      let notes = [2000, 500, 200, 100, 50];
+      var mxNote = amount;
+      let withdrawNote = [];
+      let countNotes = [];
+      for (let i = 0; i < notes.length; i++) {
+        if (amount >= notes[i]) {
+
+          countNotes.push(Math.floor(amount / notes[i]));
+
+          amount = amount % notes[i];
+          withdrawNote.push(notes[i]);
+
+        }
+      }
+      //print
+
+      for (let i = 0; i < withdrawNote.length; i++) {
+        if (countNotes[i] != 0) {
+          var li = document.createElement("li");
+          if (i === 0 && i != (withdrawNote.length - 1)) {
+            li.appendChild(document.createTextNode("Minimum: " + withdrawNote[i] + " = " + countNotes[i] + ","));
+          } else {
+            li.appendChild(document.createTextNode(withdrawNote[i] + " = " + countNotes[i] + ","));
+          }
+          if (i === withdrawNote.length - 1) {
+            li.appendChild(document.createTextNode("Maximum:  50" + " = " + mxNote / 50));
+
+          }
+
+
+        }
+        res.appendChild(li);
+      }
+    }
+
+  </script>
+</body>
+
+</html>

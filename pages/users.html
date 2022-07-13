@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>All users</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    .active {
+      background-color: rgb(0, 255, 179);
+      border: 1px solid white;
+    }
+
+    a:hover {
+      background-color: rgb(1, 29, 21);
+      border: 1px solid white;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <a href="users.html" class="active" style="background-color:rgb(4, 168, 119);">View Users</a>
+      <a href="moneyAss.html">Withdraw Money</a>
+    </div>
+  </header>
+  <main>
+
+
+    <div style="overflow-x:auto;">
+      <table class="list" id="user">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </main>
+  <footer>
+
+
+  </footer>
+  <script src="index.js"></script>
+  <script>
+    //getting data
+    getUser = () => {
+      var user = JSON.parse(localStorage.getItem("user"));
+      if (user == null) {
+        document.getElementsByClassName("tbody").innerHTML = "No data"
+      } else {
+        for (var j = 0; j < user.length; j++) {
+
+          insertNewRecord(j, user[j]);
+        }
+      }
+
+
+    };
+    getUser();
+
+    //creating table
+
+    function insertNewRecord(id, data) {
+      var table = document
+        .getElementById("user")
+        .getElementsByTagName("tbody")[0];
+      var newRow = table.insertRow(table.length);
+      cell1 = newRow.insertCell(0);
+      cell1.innerHTML = id;
+      cell2 = newRow.insertCell(1);
+      cell2.innerHTML = data['name'];
+      cell3 = newRow.insertCell(2);
+      cell3.innerHTML = data['email'];
+      cell4 = newRow.insertCell(3);
+
+    }
+
+  </script>
+</body>
+
+</html>

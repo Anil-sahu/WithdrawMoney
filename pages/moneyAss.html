@@ -72,7 +72,7 @@
       for (let i = 0; i < withdrawNote.length; i++) {
         if (countNotes[i] != 0) {
           var li = document.createElement("li");
-          if (i === 0 && i != (withdrawNote.length - 1)) {
+          if (i === 0 ) {
             li.appendChild(document.createTextNode("Minimum: " + withdrawNote[i] + " = " + countNotes[i] + ","));
           } else {
             li.appendChild(document.createTextNode(withdrawNote[i] + " = " + countNotes[i] + ","));
